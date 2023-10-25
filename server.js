@@ -1,37 +1,16 @@
 const express = require('express');
 const server = express();
-
+const path = require('path');
 const PORT = process.env.PORT || 3000;
-const si = require('systeminformation');
 
-const getSystemInfo = async () => {
-    // System information
-    // define all values, you want to get back
-    valueObject = {
-      cpu: '*',
-      osInfo: '*',
-      system: '*',
-      connection: '*',
-      audio: '*',
-      memory: '*'
-    };
-  
-    //   si.get(valueObject).then((data) => console.log(data));
-    const getSystemInfo = await si
-      .get(valueObject)
-      .catch((error) => console.error(error));
+server.use(express.urlencoded({ extended: true })); 
+server.use(express.json({extended: true}));
 
-    return getSystemInfo;
-}
+app.use(express.static(path.join(__dirname, 'public')));
 
-server.get('/', async (request, response) => {
-    const systemInfo = await getSystemInfo();
-
-    response
-        .status( 200 )
-        .send( systemInfo );
-
-});
+// server.get('/', async (request, response) => {
+//     response.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
 server.listen( PORT, () => {
     console.info(`Server is running on *:${ PORT }`);
