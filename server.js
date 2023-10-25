@@ -7,6 +7,8 @@ server.use(express.urlencoded({ extended: true }));
 server.use(express.json({extended: true}));
 
 server.use(express.static(path.join(__dirname, 'public')));
+server.use(express.static(path.join(__dirname, 'dist')));
+
 
 // server.get('/', async (request, response) => {
 //     response.sendFile(path.join(__dirname, 'public', 'index.html'));
