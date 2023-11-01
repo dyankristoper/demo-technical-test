@@ -1,18 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="system-info"></div>
+  <head>
+    <title>Test Tech Hiring Procedure | Balboa Digital</title>
+    <script src="./script.js" defer></script>
+    <script src="./recording.js" defer></script>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="flex just-center">
 
-    <script src="/dist/bundle.js"></script>
-    <script>
-        const systemInformation = getSystemInfo();
-        console.log( systemInformation );
-    </script>
-</body>
+    <main>
+      <h1>Test Tech Hiring Procedure</h1>
+      <div id="multi-step-form-container">
+        <!-- Form Steps / Progress Bar -->
+        <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
+
+          <!-- Step 1 -->
+          <li class="form-stepper-active text-center form-stepper-list" step="1">
+            <a class="mx-2">
+              <span class="form-stepper-circle">
+                <span>1</span>
+              </span>
+              <div class="label">Collecting Personal Data</div>
+            </a>
+          </li>
+
+          <!-- Step 2 -->
+          <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+            <a class="mx-2">
+              <span class="form-stepper-circle text-muted">
+                <span>2</span>
+              </span>
+              <div class="label text-muted">Hardware Information</div>
+            </a>
+          </li>
+
+          <!-- Step 3 -->
+          <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
+            <a class="mx-2">
+              <span class="form-stepper-circle text-muted">
+                <span>3</span>
+              </span>
+              <div class="label text-muted">Twilio Test</div>
+            </a>
+          </li>
+
+          <!-- Step 4 -->
+          <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
+            <a class="mx-2">
+              <span class="form-stepper-circle text-muted">
+                <span>4</span>
+              </span>
+              <div class="label text-muted">Audio Recording Test</div>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Step Wise Form Content -->
+        <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
+          <!-- Step 1 Content -->
+          <section id="step-1" class="form-step flex just-center align-center flex-col">
+            <h2 class="font-normal">We gather your data</h2>
+            <!-- Step 1 input fields -->
+            <div class="mt-3 flex flex-col align-center">
+              <img 
+                width="500"
+                height="100%"
+                src="./assets/data-disclaimer.jpg"
+                alt="Data disclaimer image"
+              />
+              <p class="data-disclaimer text-center">
+                Maecenas facilisis fermentum lectus aliquet feugiat. Cras pharetra, nunc nec suscipit lobortis, nunc dui viverra velit, eget vestibulum ante ipsum et orci. Sed a hendrerit orci. Aenean a felis vel est feugiat iaculis non nec ligula. Morbi porta libero ante, et fermentum risus molestie eu. Donec pretium efficitur neque, vitae mollis diam fringilla in. Cras ut ligula nisi. Donec egestas lorem a lorem molestie, at dignissim lorem euismod.
+              </p>
+            </div>
+            <div class="mt-3 text-center">
+              <button class="button btn-navigate-form-step" type="button" step_number="2">Confirm</button>
+            </div>
+          </section>
+          <!-- Step 2 Content, default hidden on page load. -->
+          <section id="step-2" class="form-step d-none flex just-center align-center flex-col">
+            <h2 class="font-normal">Hardware Information</h2>
+            <!-- Step 2 input fields -->
+            <div class="mt-3 flex flex-col align-center">
+              <p class="text-center">
+                Vestibulum tincidunt arcu nec consequat suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lacinia eros vel finibus euismod.
+              </p>
+              <div class="download-material-container mt-3 flex flex-col gap-20">
+                <a href="./assets/scripts/run-tech-specifications-test.ps1" download>
+                  <div class="material border-lightgrey flex">
+                    <img
+                      width="50" 
+                      class="material-icon"
+                      src="./assets/file.png"
+                      alt="PS1 Icon"
+                    />
+                    <p class="material-filename">
+                      run-test-specifications-test.ps1
+                    </p>
+                  </div>
+                </a>
+
+                <a href="./assets/scripts/run-tech-specifications-test-admin.bat" download>
+                  <div class="material border-lightgrey flex">
+                    <img
+                      width="50" 
+                      class="material-icon"
+                      src="./assets/bat-icon.png"
+                      alt="Batch File Icon"
+                    />
+                    <p class="material-filename">
+                      run-test-specifications-test-admin.bat
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="mt-3 flex flex-col align-center">
+              <h3>
+                Upload results
+              </h3>
+              <div class="input-file-container border-lightgrey">
+                <input
+                  id="hardware-test-result"
+                  type="file"
+                  accept=".txt" />
+              </div>
+            </div>
+            <div class="mt-3 text-center">
+              <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
+              <button
+                class="button btn-navigate-form-step" 
+                type="button" 
+                step_number="3">Next</button>
+            </div>
+          </section>
+          <!-- Step 3 Content, default hidden on page load. -->
+          <section id="step-3" class="form-step d-none flex just-center align-center flex-col">
+            <h2 class="font-normal">Twilio Test</h2>
+            <!-- Step 3 input fields -->
+            <div class="mt-3 flex flex-col align-center">
+              <p class="text-center">
+                Vestibulum tincidunt arcu nec consequat suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lacinia eros vel finibus euismod.
+              </p>
+              <div class="mt-3 flex flex-col gap-20 w-100">
+                <iframe
+                  allow="camera;microphone"
+                  src="https://networktest.twilio.com/"
+                  height="800px"
+                  frameBorder="0"
+                  >
+                </iframe>
+              </div>
+            </div>
+            <div class="mt-3 text-center">
+              <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
+              <button 
+                id="twilio-submit-btn" 
+                class="button btn-navigate-form-step" 
+                type="button" 
+                step_number="4">Next</button>
+            </div>
+          </section>
+
+          <!-- Step 4 Content, default hidden on page load. -->
+          <section id="step-4" class="form-step d-none flex just-center align-center flex-col">
+            <h2 class="font-normal">Audio Recording Test</h2>
+            <!-- Step 4 input fields -->
+            <div class="mt-3 flex flex-col align-center">
+              <p class="text-center">
+                Vestibulum tincidunt arcu nec consequat suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lacinia eros vel finibus euismod.
+              </p>
+              <div class="microphone-container mt-3 border-lightgrey border-radius-circle">
+                <img 
+                  src="./assets/microphone-icon.png"
+                  alt="Microphone Icon"
+                  width="60px"
+                  />
+                <div class="recording-contorl-buttons-container hide">
+                  <img
+                    class="cancel-recording-button" 
+                    src="./assets/cancel-button.png"
+                    alt="Cancel Icon"
+                    width="60px"
+                    aria-hidden="true"
+                  />
+                  <div class="recording-elapsed-time">
+                      <img
+                        class="red-recording-dot" 
+                        src="./assets/rec-dot.png"
+                        alt="Cancel Icon"
+                        width="60px"
+                        aria-hidden="true"
+                      />
+                      <p class="elapsed-time"></p>
+                  </div>
+                  <img
+                    class="stop-recording-button" 
+                    src="./assets/stop-icon.png"
+                    alt="Stop Icon"
+                    width="60px"
+                    aria-hidden="true"
+                  />
+                </div>
+                <audio 
+                  controls 
+                  class="audio-element hide">
+                </audio>
+              </div>
+            </div>
+            <div class="mt-3 text-center">
+              <button class="button btn-navigate-form-step" type="button" step_number="3">Prev</button>
+              <button class="button submit-btn" type="submit">Save</button>
+            </div>
+          </section>
+        </form>
+      </div>
+    </main>
+
+  </body>
 </html>
