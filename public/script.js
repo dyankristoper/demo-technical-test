@@ -4,7 +4,7 @@ const fileDownloaded = false;
 
 const twilioGetResultsButton = document.querySelector("#twilio-get-results");
 
-const DEFAULT_ENDPOINT = "http://localhost:3001";
+const DEFAULT_ENDPOINT = "https://demo-technical-test.onrender.com";
 
 
 /**
@@ -80,7 +80,9 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
     });
 });
 
-const fetchTwilioResults = async () => {
+const fetchTwilioResults = async (event) => {
+    event.preventDefault();
+
     fetch(`${ DEFAULT_ENDPOINT }/scrape`)
     .then( res  => res.json() )
     .then( data => console.log(data));
@@ -110,4 +112,4 @@ const onTwilioTestSubmit = () => {
 }
 
 twilioSubmitBtn.addEventListener('click', onTwilioTestSubmit );
-twilioGetResultsButton.addEventListener('click', fetchTwilioResults );
+twilioGetResultsButton.addEventListener('click', (event) => fetchTwilioResults(event) );
