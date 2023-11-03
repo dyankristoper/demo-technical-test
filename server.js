@@ -3,7 +3,7 @@ const server = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-const scrapeIframe = require('./utils/scrapeIframe');
+const { scrapeIframe } = require('./utils/scrapeIframe');
 
 server.use(express.urlencoded({ extended: true })); 
 server.use(express.json({extended: true}));
