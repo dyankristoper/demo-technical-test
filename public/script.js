@@ -2,6 +2,10 @@
 // Flag to indicate if automation files have been downloaded
 const fileDownloaded = false;
 
+const twilioGetResultsButton = document.querySelector("#twilio-get-results");
+
+const DEFAULT_ENDPOINT = "http://localhost:3001";
+
 
 /**
  * Define a function to navigate betweens form steps.
@@ -76,6 +80,12 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
     });
 });
 
+const fetchTwilioResults = async () => {
+    fetch(`${ DEFAULT_ENDPOINT }/scrape`)
+    .then( res  => res.json() )
+    .then( data => console.log(data));
+}
+
 /* 
     Fetch information inside the iFrame
     Look for Jitter and Packet Loss 
@@ -100,3 +110,4 @@ const onTwilioTestSubmit = () => {
 }
 
 twilioSubmitBtn.addEventListener('click', onTwilioTestSubmit );
+twilioGetResultsButton.addEventListener('click', fetchTwilioResults );
