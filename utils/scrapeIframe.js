@@ -3,9 +3,9 @@ const puppeteer = require('puppeteer');
 const scrapeIframe = async ( url ) => {
     let logs = [];
 
-    const browser = await puppeteer.launch({
-        headless: "new"
-    });
+    // const browser = await puppeteer.launch({
+    //     headless: "new"
+    // });
 
     // Store the endpoint to be able to reconnect to the browser.
     // const browserWSEndpoint = browser.wsEndpoint();
