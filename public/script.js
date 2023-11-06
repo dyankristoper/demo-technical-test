@@ -3,6 +3,7 @@
 const fileDownloaded = false;
 
 const twilioGetResultsButton = document.querySelector("#twilio-get-results");
+const webSocketUrl = document.querySelector("#web-socket-url");
 
 const DEFAULT_ENDPOINT = "https://demo-technical-test.onrender.com";
 
