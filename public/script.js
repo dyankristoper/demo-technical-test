@@ -84,7 +84,11 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
 const fetchTwilioResults = async (event) => {
     event.preventDefault();
 
-    fetch(`${ DEFAULT_ENDPOINT }/scrape`)
+    const body = {
+        webSocketUrl
+    }
+
+    fetch(`${ DEFAULT_ENDPOINT }/scrape`, { method: 'POST', body: JSON.stringify( body ) })
     .then( res  => res.json() )
     .then( data => console.log(data));
 }
