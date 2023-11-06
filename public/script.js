@@ -85,7 +85,7 @@ const fetchTwilioResults = async (event) => {
     event.preventDefault();
 
     const body = {
-        webSocketUrl
+        webSocketUrl: webSocketUrl.value
     }
 
     fetch(`${ DEFAULT_ENDPOINT }/scrape`, { method: 'POST', body: JSON.stringify( body ) })
