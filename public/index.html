@@ -4,6 +4,7 @@
     <title>Test Tech Hiring Procedure | Balboa Digital</title>
     <script src="./script.js" defer></script>
     <script src="./recording.js" defer></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <link href="./style.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="flex just-center">
@@ -53,6 +54,16 @@
               <div class="label text-muted">Audio Recording Test</div>
             </a>
           </li>
+
+          <!-- Step 5 -->
+          <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
+            <a class="mx-2">
+              <span class="form-stepper-circle text-muted">
+                <span>5</span>
+              </span>
+              <div class="label text-muted">Submit Results</div>
+            </a>
+          </li>
         </ul>
 
         <!-- Step Wise Form Content -->
@@ -71,6 +82,10 @@
               <p class="data-disclaimer text-center">
                 Maecenas facilisis fermentum lectus aliquet feugiat. Cras pharetra, nunc nec suscipit lobortis, nunc dui viverra velit, eget vestibulum ante ipsum et orci. Sed a hendrerit orci. Aenean a felis vel est feugiat iaculis non nec ligula. Morbi porta libero ante, et fermentum risus molestie eu. Donec pretium efficitur neque, vitae mollis diam fringilla in. Cras ut ligula nisi. Donec egestas lorem a lorem molestie, at dignissim lorem euismod.
               </p>
+
+              <p class="data-disclaimer text-center">
+                No personal data will be accessed during the test.
+              </p>
             </div>
             <div class="mt-3 text-center">
               <button class="button btn-navigate-form-step" type="button" step_number="2">Confirm</button>
@@ -82,8 +97,26 @@
             <!-- Step 2 input fields -->
             <div class="mt-3 flex flex-col align-center">
               <p class="text-center">
-                Vestibulum tincidunt arcu nec consequat suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lacinia eros vel finibus euismod.
+                The technical test will measure specific statistics with one's computer. The following statistics are as follows: speed test, current storage capacity, RAM, operating system, and audio devices. 
               </p>
+              
+              <p>
+                Please follow the instructions provided below. 
+              </p>
+
+              <div class="info instructions-container">
+                <ol class="instruction-list">
+                  <li>
+                    Download both files, <span class="mono mono-color underlined">run-test-specifications-test.ps1</span> and <span class="mono mono-color underlined">run-test-specifications-test-admin.bat</span> by clicking the buttons below. The two files, when downloaded, should be in the same location.
+                  </li>
+                  <li>
+                    Click <span class="mono mono-color underlined">run-test-specifications-test-admin.bat</span>. A prompt will appear and you have to input your administrator credentials.
+                  </li>
+                  <li>
+                    Wait for the PowerShell window to close and check for the "results" folder. Make sure there is one text file present.
+                  </li>
+                </ol>
+              </div>
               <div class="download-material-container mt-3 flex flex-col gap-20">
                 <a href="./assets/scripts/run-tech-specifications-test.ps1" download>
                   <div class="material border-lightgrey flex">
@@ -114,17 +147,6 @@
                 </a>
               </div>
             </div>
-            <div class="mt-3 flex flex-col align-center">
-              <h3>
-                Upload results
-              </h3>
-              <div class="input-file-container border-lightgrey">
-                <input
-                  id="hardware-test-result"
-                  type="file"
-                  accept=".txt" />
-              </div>
-            </div>
             <div class="mt-3 text-center">
               <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
               <button
@@ -139,28 +161,55 @@
             <!-- Step 3 input fields -->
             <div class="mt-3 flex flex-col align-center">
               <p class="text-center">
-                Vestibulum tincidunt arcu nec consequat suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lacinia eros vel finibus euismod.
+                The Twilio Diagnostic Test will check on your browser's environment and network capabilities. 
               </p>
-              <div class="mt-3 flex flex-col gap-20 w-100">
+
+              <div class="info instructions-container">
+                <ol class="instruction-list">
+                  <li>
+                    Go through the Twilio Diagnostic Test until you see the "Done" on the Log Output.
+                  </li>
+                  <li>
+                    Visit the webpage, <a class="underlined link-color" href="https://medium.com/@jaredpotter1/connecting-puppeteer-to-existing-chrome-window-8a10828149e0#7731" target="_blank">Connecting Puppeteer to Existing Chrome Window w/ reCAPTCHA</a>. Follow the instructions, for Windows OS, on how to launch Google Chrome with Puppeteer.
+                  </li>
+                  <li>
+                    Provide the Web Socket URL on the textbox below. 👇🏻
+                  </li>
+                  <li>
+                    Scroll through the log output and make sure you can see <span class="mono mono-color underlined">Packet Loss</span> and <span class="mono mono-color underlined">Jitter</span>
+                  </li>
+                  <li>
+                    Click "Take Screenshot" button to capture results.
+                  </li>
+                </ol> 
+              </div>
+
+              <div class="web-socket-input-container mt-3">
+                <input 
+                  type="text"
+                  id="web-socket-endpoint"
+                  placeholder="Web Socket URL">
+              </div>
+              <div class="twilio-test-container mt-3 flex flex-col gap-20 w-100">
                 <iframe
+                  id="twilio-iframe"
+                  name="twilio-iframe"
                   allow="camera;microphone"
                   src="https://networktest.twilio.com/"
                   height="800px"
                   frameBorder="0"
                   >
                 </iframe>
-                <input
-                  type="text"
-                  id="web-socket-url" />
               </div>
+
               <button
                   id="twilio-get-results"
                   class="button mt-3"
                 >
-                  Done
+                  Take Screenshot
               </button>
             </div>
-            <div class="mt-3 text-center">
+            <div class="mt-3 text-center twilio-nav-container hide">
               <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
               <button 
                 id="twilio-submit-btn" 
@@ -178,52 +227,135 @@
               <p class="text-center">
                 Vestibulum tincidunt arcu nec consequat suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lacinia eros vel finibus euismod.
               </p>
-              <div class="microphone-container mt-3 border-lightgrey border-radius-circle">
+
+              <div class="info instructions-container">
+                <ol class="instruction-list">
+                  <li>
+                    Click the microphone icon to start recording.
+                  </li>
+                  <li>
+                    Once done, click on the "STOP" icon to stop the recording.
+                  </li>
+                  <li>
+                    You can play your recent recorded audio by clicking the "Play recording" button. 
+                  </li>
+                  <li>
+                    If the audio is unclear and you'd like to try again, click the microphone icon to restart recording.
+                  </li>
+                  <li>
+                    Once you are satisfied with the recording, you can hit the "Next" button.
+                  </li>
+                </ol> 
+              </div>
+
+              <div class="microphone-container mt-3 mb-3 border-lightgrey border-radius-circle">
                 <img 
                   src="./assets/microphone-icon.png"
                   alt="Microphone Icon"
                   width="60px"
                   />
-                <div class="recording-contorl-buttons-container hide">
-                  <img
-                    class="cancel-recording-button" 
-                    src="./assets/cancel-button.png"
-                    alt="Cancel Icon"
-                    width="60px"
-                    aria-hidden="true"
-                  />
-                  <div class="recording-elapsed-time">
-                      <img
-                        class="red-recording-dot" 
-                        src="./assets/rec-dot.png"
-                        alt="Cancel Icon"
-                        width="60px"
-                        aria-hidden="true"
-                      />
-                      <p class="elapsed-time"></p>
-                  </div>
-                  <img
-                    class="stop-recording-button" 
-                    src="./assets/stop-icon.png"
-                    alt="Stop Icon"
-                    width="60px"
-                    aria-hidden="true"
-                  />
-                </div>
                 <audio 
                   controls 
                   class="audio-element hide">
                 </audio>
               </div>
+              <div class="mt-3 mb-3">
+                <select
+                  id="audio-devices"></select>
+              </div>
+              <div class="recording-contorl-buttons-container flex flex-col align-center gap-20 hide">
+                <div class="recording-elapsed-time flex">
+                  <h3 class="elapsed-time fs-3rem"></h3>
+                </div>
+                <div class="flex gap-20">
+                  <img
+                    class="cancel-recording-button" 
+                    src="./assets/cancel-button.png"
+                    alt="Cancel Icon"
+                    width="40px"
+                    aria-hidden="true"
+                  />
+
+                  <img
+                    class="stop-recording-button" 
+                    src="./assets/stop-icon.png"
+                    alt="Stop Icon"
+                    width="40px"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+              
+              <div class="text-indication-of-audio-playing-container">
+                <p class="text-indication-of-audio-playing hide">Audio is playing...</p>
+              </div>
+
+              <div class="playback-container flex align-center hide">
+                <button 
+                  id="playback-btn"
+                  class="button mr-1" 
+                  type="button">Play recording</button>    
+              </div>
             </div>
             <div class="mt-3 text-center">
               <button class="button btn-navigate-form-step" type="button" step_number="3">Prev</button>
-              <button class="button submit-btn" type="submit">Save</button>
+              <button class="button btn-navigate-form-step" type="button" step_number="5">Next</button>
             </div>
           </section>
-        </form>
+          </form>
+
+          <!-- Step 5 Content, default hidden on page load. -->
+          <section id="step-5" class="form-step d-none flex just-center align-center flex-col">
+            <h2 class="font-normal">Submit Results</h2>
+            <p class="text-center">
+              Results of the technical test with be sent to Balboa Digital HR Department. 
+              Please provide your fullname below and upload your results for the technical test.
+            </p>
+
+            <div class="submission-results-container flex flex-col gap-20 align-center just-center">
+              <div class="mt-3 flex flex-col align-center">
+                <input 
+                  type="text"
+                  placeholder="Fullname"
+                  name="name"
+                  id="name" />
+              </div>
+
+              <form id="formSubmissionResults">
+                <div class="flex flex-col align-center">
+                  <h3>
+                    Hardware Information Result
+                  </h3>
+                  <div class="input-file-container border-lightgrey">
+                    <input
+                      id="hardware-test-result"
+                      type="file"
+                      accept=".txt" />
+                  </div>
+                </div>
+
+              </div>
+              <div class="mt-3 text-center submit-button-container">
+                <button class="button btn-navigate-form-step" type="button" step_number="4">Prev</button>
+                <button class="button submit-btn" type="submit">Submit</button>
+              </div>
+            </form>
+
+            <div class="final-step-container hide">
+              <div class="flex flex-col align-center">
+                <img 
+                  width="500"
+                  height="100%"
+                  src="./assets/congratulations.jpg"
+                  alt="Congratulations image"
+                />
+                <p class="data-disclaimer text-center">
+                  Congratulations 🎉 Kindly wait for the email from HR on the assessment.
+                </p>
+              </div>
+            </div>
+          </section>  
       </div>
     </main>
-
   </body>
 </html>
