@@ -4,6 +4,7 @@ const fileDownloaded = false;
 
 const twilioGetResultsButton = document.querySelector("#twilio-get-results");
 const webSocketUrl = document.querySelector("#web-socket-url");
+const selectAudioDevices = document.querySelector("#audio-devices");
 
 const DEFAULT_ENDPOINT = "https://demo-technical-test.onrender.com";
 
@@ -93,6 +94,24 @@ const fetchTwilioResults = async (event) => {
     .then( data => console.log(data));
 }
 
+/**
+ * TODO: Add description
+ */
+ const populateAudioDevices = () => {
+    navigator.mediaDevices
+        .enumerateDevices()
+        .then((devices) => {
+            devices.forEach((device) => {
+                if( device.kind == 'audioinput' ){
+                    const option = document.createElement('option');
+                    option.value = device.deviceId;
+                    option.innerHTML = device.label;
+                    selectAudioDevices.appendChild( option );
+                }
+        });
+    });
+}
+
 /* 
     Fetch information inside the iFrame
     Look for Jitter and Packet Loss 
@@ -118,3 +137,6 @@ const onTwilioTestSubmit = () => {
 
 twilioSubmitBtn.addEventListener('click', onTwilioTestSubmit );
 twilioGetResultsButton.addEventListener('click', (event) => fetchTwilioResults(event) );
+
+populateAudioDevices();
+
