@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-const { scrapeIframePuppeteer, scrapeIframeCheerio } = require('./utils/scrapeIframe');
+const { scrapeIframePuppeteer, scrapeIframeCheerio, scrapeIframe } = require('./utils/scrapeIframe');
 
 server.use(express.urlencoded({ extended: true })); 
 // server.use(express.json({extended: true}));
@@ -28,11 +28,13 @@ server.post('/scrape', async (request, response) => {
     // const { webSocketUrl } = request.body;
     // const logs = await scrapeIframe( webSocketUrl );
 
-    const logs = await scrapeIframeCheerio();
+    // const logs = await scrapeIframeCheerio();
+
+    await scrapeIframe();
 
     response
         .status(200)
-        .send({ data: logs });
+        .send({ status: "Ok" });
 });
 
 server.listen( PORT, () => {
