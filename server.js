@@ -22,7 +22,7 @@ server.get('/diagnostics', ( request, response ) => {
         .send({ status: "Ok" });
 });
 
-server.post('/scrape', async (request, response) => {
+server.get('/scrape', async (request, response) => {
     console.log('Scraping.,,,');
 
     // const { webSocketUrl } = request.body;
